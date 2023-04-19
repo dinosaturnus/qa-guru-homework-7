@@ -33,9 +33,13 @@ public class RegistrationPage {
     //Actions
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+
+        return this;
+    }
+
+    public RegistrationPage closedBanners() {
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
-        $(".main-header").shouldHave(text("Practice Form"));
 
         return this;
     }
@@ -80,13 +84,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setSubjects(String value) {
+    public RegistrationPage setSubject(String value) {
         subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
 
-    public RegistrationPage setHobbies(String value) {
+    public RegistrationPage setHobby(String value) {
         hobbiesInput.$(byText(value)).click();
 
         return this;

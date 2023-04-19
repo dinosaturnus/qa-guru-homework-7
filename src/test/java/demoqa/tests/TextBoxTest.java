@@ -1,8 +1,11 @@
 package demoqa.tests;
 
+import demoqa.pages.TextBoxPage;
 import org.junit.jupiter.api.Test;
 
-public class TextBox extends TestBase {
+public class TextBoxTest extends TestBase {
+
+    TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
     void textBoxTest() {
@@ -13,6 +16,7 @@ public class TextBox extends TestBase {
                 permanentAddress = "Moscow, ul Tulpa, d 6, kv 19";
 
         textBoxPage.openPage()
+                .closedBanners()
                 .setFullName(fullName)
                 .setEmail(email)
                 .setCurrentAddress(currentAddress)

@@ -1,8 +1,11 @@
 package demoqa.tests;
 
+import demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
-public class RegistrationPracticeForm extends TestBase {
+public class RegistrationPracticeFormTest extends TestBase {
+
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void fullFormTest() {
@@ -15,8 +18,8 @@ public class RegistrationPracticeForm extends TestBase {
                 birthMonth = "May",
                 birthYear = "1999",
                 birthDay = "16",
-                subjects = "Maths",
-                hobbies = "Music",
+                subject = "Maths",
+                hobby = "Music",
                 picturePath = "images/image.png",
                 pictureName = "image.png",
                 address = "Moscow, ul Leopardovaya, d 18, kv 219",
@@ -24,14 +27,15 @@ public class RegistrationPracticeForm extends TestBase {
                 city = "Noida";
 
         registrationPage.openPage()
+                .closedBanners()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(email)
                 .setGender(gender)
                 .setPhoneNumber(phoneNumber)
                 .setBirthDate(birthYear, birthMonth, birthDay)
-                .setSubjects(subjects)
-                .setHobbies(hobbies)
+                .setSubject(subject)
+                .setHobby(hobby)
                 .uploadPicture(picturePath)
                 .setAddress(address)
                 .setState(state)
@@ -44,8 +48,8 @@ public class RegistrationPracticeForm extends TestBase {
                 .verifyResults("Gender", gender)
                 .verifyResults("Mobile", phoneNumber)
                 .verifyResults("Date of Birth", birthDay + " " + birthMonth + "," + birthYear)
-                .verifyResults("Subjects", subjects)
-                .verifyResults("Hobbies", hobbies)
+                .verifyResults("Subjects", subject)
+                .verifyResults("Hobbies", hobby)
                 .verifyResults("Picture", pictureName)
                 .verifyResults("Address", address)
                 .verifyResults("State and City", state + " " + city);
